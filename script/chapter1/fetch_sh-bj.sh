@@ -1,0 +1,2 @@
+#!/bin/bash
+curl --insecure --user-agent "Mozilla/5.0 (X11; Linux i686; rv:38.0) Gecko/20100101 Firefox/38.0" "https://kyfw.12306.cn/otn/lcxxcx/query?purpose_codes=ADULT&queryDate=$1&from_station=SHH&to_station=BJP" | grep -oP "(?<={)[^{}]+(?=})" | sed -r 's/.*station_train_code":"([^"]+).*start_station_name":"([^"]+).*end_station_name":"([^"]+).*start_time":"([^"]+).*arrive_time":"([^"]+).*ze_num":"([^"]+).*zy_num":"([^"]+).*swz_num":"([^"]+).*/\1 \2 \3 \4 \5 \6 \7 \8/'
